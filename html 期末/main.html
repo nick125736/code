@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <head>
+        <title>新聞</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+        <script async src="https://cse.google.com/cse.js?cx=3066e59ce0e5947c1"></script>
+        <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="icon" href="https://d3v3cbxkdlyonc.cloudfront.net/stocks/favicon.ico">
+    </head>
+    <body>
+        <!--------------------------回頂部------------------->
+        <div class="back-top hide" title="回頂部"></div> 
+        <!--------------------------搜尋引擎----------------->
+        <div class="gcse-search"></div>
+        <!--------------------------翻譯--------------------->
+        <div class="gtranslate_wrapper"></div>
+        <!--------------------------導覽列-------------------->
+        <nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid"> 
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#home">Home</a>
+	</div>
+	<div id="myexample">
+		<ul class="nav navbar-nav">
+			<li class=""><a href="#news">新聞</a></li>
+			<li class="dropdown "><a href="#
+                weather" class="dropdown-toggle" data-toggle="dropdown">天氣 <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#now">台灣實時天氣地圖</a></li>
+					<li><a href="#future">天氣預報</a></li>
+				</ul>
+			</li>
+            <li class=""><a href="#stock">股票</a></li>
+		</ul>
+	</div>
+	</div>	
+        </nav>
+
+
+
+        <div class="content active" id="home">
+            <h1>開發團隊</h1>
+            <P>110B26379 徐成勛</P>
+            <p>110B26003 王昱文</p>
+            <p>參考資料:</p>
+            <a href="https://www.techmarks.com/gtranslate/">網頁翻譯功能</a> <br>
+            <a href="https://github.com/Monoame-Design/bosscoding-examples/tree/master/svg%20map">實時天氣地圖</a> <br>
+            <a href="https://github.com/toddwschneider/stocks">股票</a> <br>
+            <a href="https://mnya.tw/cc/word/1735.html">回頂部按鈕</a> 
+        </div>
+
+        <div class="content" id="news">
+            <select id="country">
+                <option value="tw">台灣</option>
+                <option value="cn">中國</option>
+                <option value="jp">日本</option>
+            </select>
+
+            <select id="category">
+                <option value="business">商業</option>
+                <option value="technology">科技</option>
+                <option value="science">科學</option>
+                <option value="sports">運動</option>
+            </select>
+
+            <select id="sort">
+                <option value="popularitys">熱門</option>
+                <option value="publishedAt">最新</option>
+            </select>
+            
+            <button onclick="getNews()">獲取新聞</button>
+
+            <div id="cardContainer"></div>
+        </div>
+
+        <div class="content" id="now">
+            <a href="mete.html">跳轉</a>
+        </div>
+
+        <div class="content fu" id="future">
+            <div id="tableContainer"></div>
+        </div>
+
+        <div class="content st" id="stock">
+            <div class="stocks-container"></div>
+        </div>
+
+    </body>
+    <script src="top.js"></script>
+    <script src="news.js"></script>
+    <script src="weather.js"></script>
+    <script src="stocks.js"></script>
+    <script>
+        window.gtranslateSettings = {"default_language":"zh-TW","native_language_names":true,"languages":["zh-TW","en","zh-CN","ja"],"wrapper_selector":".gtranslate_wrapper","alt_flags":{"en":"usa","fr":"quebec"}}
+
+
+
+        document.querySelectorAll('nav a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // 取消預設行為，避免頁面跳轉
+          
+                // 將所有內容隱藏
+                document.querySelectorAll('.content').forEach(function(content) {
+                    content.classList.remove('active');
+                });
+          
+                // 將選中的內容顯示
+                var targetId = this.getAttribute('href');
+                document.querySelector(targetId).classList.add('active');
+            });
+        });
+
+    </script>
+</html>
